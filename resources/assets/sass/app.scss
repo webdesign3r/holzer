@@ -1,15 +1,24 @@
 
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i);
+
+// Bootstrap
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+// Helper
+@import "helper/animate";
 
 // Variables
 @import "variables";
 
-//Layout
+// Components
+@import "components/caroussel";
+
+// Base
+@import "base/navigation";
+@import "base/forms";
 @import "base/layout";
-
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
 
 

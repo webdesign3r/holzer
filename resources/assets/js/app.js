@@ -23,25 +23,49 @@ const app = new Vue({
 
 $(document).ready(function () {
 
+	var $item = $('.carousel .item'); 
+	var $wHeight = $(window).height()-(($(window).height()/100)*0);
+	$item.eq(0).addClass('active');
+	$item.height($wHeight); 
+	$item.addClass('full-screen');
+
+	$('.carousel img').each(function() {
+		var $src = $(this).attr('src');
+		$(this).parent().css({
+			'background-image' : 'url(' + $src + ')',
+		});
+		$(this).remove();
+	});
+
+	$(window).on('resize', function (){
+		$wHeight = $(window).height();
+		$item.height($wHeight);
+	});
+
+	$('.carousel').carousel({
+		interval: 9000,
+		pause: "false"
+	});
+
 });
 
-var $document = $(document),
-    $element = $('.navbar'),
-    navbarDefault = 'navbar-default';
-    navbarTransparent = 'navbar-custom';
+// var $document = $(document),
+//     $element = $('.navbar'),
+//     navbarDefault = 'navbar-custom';
+//     navbarTransparent = 'navbar-transparent';
 
-    fadeInDown = 'fadeInDown';
+//     fadeInDown = 'fadeInDown';
 
-$document.scroll(function(){
-    if ($document.scrollTop() >= 200) {
-        $element.addClass(navbarDefault);
-        $element.removeClass(navbarTransparent);
-        $element.addClass(fadeInDown);
-        $("#logo").attr("src", "images/logo_dark.png");
-    } else {
-        $element.addClass(navbarTransparent);
-        $element.removeClass(navbarDefault);
-        $element.removeClass(fadeInDown);
-        $("#logo").attr("src", "images/logo_white.png");
-    }
-});
+// $document.scroll(function(){
+//     if ($document.scrollTop() >= 200) {
+//         $element.addClass(navbarDefault);
+//         $element.removeClass(navbarTransparent);
+//         $element.addClass(fadeInDown);
+//         $("#logo").attr("src", "/storage/{{ Voyager::setting('logo_dunkel') }}");
+//     } else {
+//         $element.addClass(navbarTransparent);
+//         $element.removeClass(navbarDefault);
+//         $element.removeClass(fadeInDown);
+//         $("#logo").attr("src", "/storage/{{ Voyager::setting('logo_hell') }}");
+//     }
+// });
